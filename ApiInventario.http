@@ -1,6 +1,41 @@
 @ApiInventario_HostAddress = http://localhost:5104
 
-GET {{ApiInventario_HostAddress}}/weatherforecast/
+### Listar equipos
+GET {{ApiInventario_HostAddress}}/api/equipos
 Accept: application/json
 
-###
+### Crear equipo
+POST {{ApiInventario_HostAddress}}/api/equipos
+Content-Type: application/json
+
+{
+  "codigoInventario": "EQ-001",
+  "nombre": "Laptop Dell",
+  "categoria": "Computadora",
+  "estado": 1,
+  "descripcion": "Equipo asignado a sistemas",
+  "ubicacion": "Oficina 101",
+  "marca": "Dell",
+  "modelo": "Latitude 5440",
+  "numeroSerie": "ABC123",
+  "fechaAdquisicion": "2024-01-15T00:00:00Z"
+}
+
+### Listar componentes
+GET {{ApiInventario_HostAddress}}/api/componentes
+Accept: application/json
+
+### Registrar mantenimiento
+POST {{ApiInventario_HostAddress}}/api/mantenimientos
+Content-Type: application/json
+
+{
+  "equipoId": "00000000-0000-0000-0000-000000000000",
+  "fechaProgramada": "2024-02-01T00:00:00Z",
+  "tipo": 1,
+  "tecnico": "Juan Pérez"
+}
+
+### Historial de movimientos de un componente
+GET {{ApiInventario_HostAddress}}/api/movimientos/componentes/00000000-0000-0000-0000-000000000000
+Accept: application/json
